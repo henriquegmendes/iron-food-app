@@ -2,6 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
+const uploadCloud = require('../config/cloudinary.js');
+
+const multer = require('multer');
+
+// const upload = multer({ dest: './public/uploads/' });
+
 const Restaurant = require('../models/Restaurant.js');
 
 /* Restaurants page */
@@ -35,13 +41,16 @@ router.get('/new-restaurant', (req, res, next) => {
   res.render('new-restaurant');
 });
 
-router.post('/new-restaurant', (req, res, next) => {
+router.post('/new-restaurant', uploadCloud.single('photo'), (req, res, next) => {
   const { name, type, description, address, location = {
     type: 'Point',
     coordinates: [req.body.longitude, req.body.latitude]
   } } = req.body;
 
-  const newRestaurant = new Restaurant({ name, type, description, address, location });
+  const imgPath = req.file.url;
+  const originalName = req.file.originalname;
+
+  const newRestaurant = new Restaurant({ name, type, description, address, location, imgPath, originalName });
   newRestaurant.save()
     .then((restaurant) => {
       console.log(newRestaurant);
