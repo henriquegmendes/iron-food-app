@@ -4,19 +4,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-
 const commentSchema = new Schema({
   title: String,
   content: String,
-  authorId: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
   imagePath: String,
   imageName: String,
-  post: {
+  restaurantId: {
     type: Schema.Types.ObjectId,
-    ref: 'Post'
+    ref: 'Restaurant'
   }
 }, {
   timestamps: {
