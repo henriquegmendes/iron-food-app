@@ -9,7 +9,6 @@ const restSchema = new Schema(
     address: { type: String },
     imgPath: String,
     imgName: String,
-    comments: { type: Array, default: null },
     location: { type: { type: String }, coordinates: [Number] }
   },
   {

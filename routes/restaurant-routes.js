@@ -10,30 +10,6 @@ const Restaurant = require('../models/Restaurant.js');
 
 const Comment = require('../models/Comment.js');
 
-/* Restaurants page */
-
-router.get('/restaurants', (req, res) => {
-  Restaurant.find()
-    .then((restaurants) => {
-      res.render('restaurants', { restaurants });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-/* Individual restaurant page */
-
-router.get('/restaurants/:id', (req, res, next) => {
-  const restaurantId = req.params.id;
-  Restaurant.findOne({ _id: restaurantId })
-    .then((restaurant) => {
-      res.render('restaurant-details', { restaurant });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
 
 /* Add new restaurant */
 
@@ -116,13 +92,19 @@ router.get('/addcomment/:id', (req, res, next) => {
 });
 
 router.post('/addcomment', (req, res, next) => {
+  // const restId = req.params._id;
   const comment = {
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    userId: req.session.currentUser._id,
+    restaurantId: req.body.restId
   };
-  Restaurant.update({ _id: req.query.restaurantId }, { $set: comment })
-    .then((restaurant) => {
-      res.redirect('/restaurants/:restaurantId');
+  console.log(comment);
+  const newComment = new Comment(comment);
+  newComment.save()
+    .then((result) => {
+      console.log(result);
+      res.redirect('/restaurants');
     })
     .catch((error) => {
       console.log(error);

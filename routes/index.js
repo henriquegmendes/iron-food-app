@@ -1,6 +1,6 @@
 const express = require('express');
 
-const router = express.Router();
+const restaurantRouter = express.Router();
 
 const multer = require('multer');
 
@@ -9,9 +9,35 @@ const upload = multer({ dest: './public/uploads/' });
 const Restaurant = require('../models/Restaurant.js');
 
 /* GET home page */
-router.get('/', (req, res) => {
+restaurantRouter.get('/', (req, res) => {
   res.render('index');
 });
 
+/* Restaurants page */
 
-module.exports = router;
+restaurantRouter.get('/restaurants', (req, res) => {
+  Restaurant.find()
+    .then((restaurants) => {
+      res.render('restaurants', { restaurants });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+/* Individual restaurant page */
+
+restaurantRouter.get('/restaurants/:id', (req, res, next) => {
+  const restaurantId = req.params.id;
+  Restaurant.findOne({ _id: restaurantId })
+    .then((restaurant) => {
+      res.render('restaurant-details', { restaurant });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+
+// module.exports = router;
+module.exports = restaurantRouter;
