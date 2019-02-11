@@ -1,2 +1,28 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="index">
+  <p><a href="/my-profile">My Profile</a></p>
+  <h1>Welcome to IronFood. Where you can find the best Ironhacker's meal experience!</h1>
+
+  <form action="/restaurants" method="post">
+    <div>
+      <label for="distance-input"> Distance from IronHack (meters)? </label>
+      <input type="number" name="distance" id="distance-input"
+        placeholder="e.g., 100">
+    </div>
+
+    <div>
+      <label for="spend-input"> How much you want to Spend (in Reais)? </label>
+      <input type="email" name="email" id="spend-input"
+        placeholder="e.g., 50">
+    </div>
+
+    <div>
+      <label for="class-input"> What do you want to eat? </label><br>
+      <input type="checkbox" id="class-input" name="class" value="Coffee">Coffee<br>
+      <input type="checkbox" id="class-input" name="class" value="Burger">Burger<br>
+      <input type="checkbox" id="class-input" name="class" value="Gourmet">Gourmet<br>
+      <input type="checkbox" id="class-input" name="class" value="Desert">Desert<br>
+    </div>
+
+    <button>Search for Restaurants!</button>
+  </form>
+</div>

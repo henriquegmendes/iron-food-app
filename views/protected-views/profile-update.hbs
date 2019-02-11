@@ -1,0 +1,28 @@
+<h2>Update my Profile</h2>
+
+<form action="/profile-update" method="post" enctype="multipart/form-data">
+  <div>
+    <label for="name-input"> Name </label>
+    <input type="text" name="name" id="name-input"
+      placeholder="e.g., Diana Prince" value="{{user.name}}">
+  </div>
+
+  <div>
+    <label for="email-input"> Email </label>
+    <input type="email" name="email" id="email-input"
+      placeholder="e.g., diana@themyscira.agency" value="{{user.email}}">
+  </div>
+
+  <div>
+    <label for="password-input"> New Password </label>
+    <input type="password" name="password" id="password-input"
+      placeholder="e.g., ••••••••••••">
+  </div>
+
+  <div>
+    <label>New Photo</label>
+    <input type="file" name="photo">
+  </div>
+
+  <button> Update my Account </button>
+</form>
