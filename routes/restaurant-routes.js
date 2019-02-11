@@ -6,9 +6,9 @@ const uploadCloud = require('../config/cloudinary.js');
 
 const multer = require('multer');
 
-// const upload = multer({ dest: './public/uploads/' });
-
 const Restaurant = require('../models/Restaurant.js');
+
+const Comment = require('../models/Comment.js');
 
 /* Restaurants page */
 
@@ -100,6 +100,32 @@ router.get('/del/:id', (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
+    });
+});
+
+/* Add comment */
+
+router.get('/addcomment/:id', (req, res, next) => {
+  Restaurant.findOne({ _id: req.params.id })
+    .then((restaurant) => {
+      res.render('addcomment', { restaurant });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.post('/addcomment', (req, res, next) => {
+  const comment = {
+    title: req.body.title,
+    content: req.body.content
+  };
+  Restaurant.update({ _id: req.query.restaurantId }, { $set: comment })
+    .then((restaurant) => {
+      res.redirect('/restaurants/:restaurantId');
+    })
+    .catch((error) => {
+      console.log(error);
     });
 });
 
