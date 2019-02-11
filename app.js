@@ -76,10 +76,14 @@ const signup = require('./routes/auth/signup');
 const login = require('./routes/auth/login');
 const profile = require('./routes/protected-routes/profile');
 
+const restaurants = require('./routes/restaurant-routes');
+
 app.use('/', index);
 app.use('/', signup);
 app.use('/', login);
 app.use('/', profile);
+
+app.use('/', restaurants);
 
 
 module.exports = app;

@@ -8,7 +8,12 @@ const UserSchema = Schema({
   password: String,
   imgPath: { type: String, default: '' },
   imgName: String,
-  comments: Array
+  comments: Array,
+  role: {
+    type: String,
+    enum: ['User', 'Admin'],
+    default: 'User'
+  }
 });
 
 const User = mongoose.model('User', UserSchema);
