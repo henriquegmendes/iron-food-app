@@ -7,6 +7,9 @@ const restSchema = new Schema(
     type: { type: String, enum: ['coffee shop', 'fast food', 'bar'] },
     description: String,
     address: { type: String },
+    imgPath: String,
+    imgName: String,
+    comments: { type: Array, default: null },
     location: { type: { type: String }, coordinates: [Number] }
   },
   {
