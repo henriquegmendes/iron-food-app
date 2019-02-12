@@ -74,7 +74,7 @@ function emptyMap() {
     zoom: 15,
     center: ironhackSAO
   });
-  console.log(arr);
+  console.log('@@@@@@', arr);
 }
 
 function initOne() {
@@ -107,3 +107,10 @@ function initOne() {
 //   map: map,
 //   title: item.name
 //   });
+
+
+// arr.push([{{#each restaurants}}{{this.location.coordinates}}{{/each}}])
+// {{#each restaurants}}arr.push([{{this.location.coordinates}}]){{/each}}
+
+// original
+// const arr = [{{#each restaurants}}{{this.location.coordinates}}{{/each}}]

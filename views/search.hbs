@@ -7,7 +7,15 @@
 
 
 <script>
-   const arr = [{{#each restaurants}}{{this.location.coordinates}}{{/each}}]
+   const arr = [
+    {{#each restaurants}}
+        [
+            {{#each this.location.coordinates}}
+                {{this}},
+            {{/each}}
+        ],
+    {{/each}}
+   ];
 </script>
 <script type="text/javascript" src="/javascripts/maps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNZEVA0U6Hw9-04kOy2ovaOe-89tD284M&callback=emptyMap">
