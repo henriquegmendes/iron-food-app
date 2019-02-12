@@ -2,28 +2,47 @@
   <p><a href="/my-profile">My Profile</a></p>
   <h1>Welcome to IronFood. Where you can find the best Ironhacker's meal experience!</h1>
 
-  <form action="/restaurants" method="post">
-    <div>
+  <form action="/search-restaurants" method="post">
+    {{!-- <div>
       <label for="distance-input"> Distance from IronHack (meters)? </label>
       <input type="number" name="distance" id="distance-input"
         placeholder="e.g., 100">
+    </div> --}}
+
+    <div>
+      <p>How much do you want to spend?</p>
+      <label for="class-input"> Preço mínimo: </label><br>
+      <select name="min">
+        <option value="10">10 reais</option>
+        <option value="20">20 reais</option>
+        <option value="30">30 reais</option>
+        <option value="40">40 reais</option>
+      </select><br>
+
+      <label for="class-input"> Preço máximo: </label><br>
+      <select name="max">
+        <option value="30">30 reais</option>
+        <option value="40">40 reais</option>
+        <option value="50">50 reais</option>
+        <option value="51">+ de 50 reais</option>
+      </select>
     </div>
 
     <div>
-      <label for="spend-input"> How much you want to Spend (in Reais)? </label>
-      <input type="email" name="email" id="spend-input"
-        placeholder="e.g., 50">
+    <label for="class-input"> Type: </label><br>
+      <input type="checkbox" id="class-input" name="type" value="Cafeteria">Cafeteria<br>
+      <input type="checkbox" id="class-input" name="type" value="Fast Food">Fast Food<br>
+      <input type="checkbox" id="class-input" name="type" value="Bar">Bar<br>
+      <input type="checkbox" id="class-input" name="type" value="Asiática">Asiática<br>
+      <input type="checkbox" id="class-input" name="type" value="Pizza">Pizza<br>
+      <input type="checkbox" id="class-input" name="type" value="Hamburgueria">Hamburgueria<br>
+      <input type="checkbox" id="class-input" name="type" value="Self Service">Self Service<br>
+      <input type="checkbox" id="class-input" name="type" value="Vegetariana">Vegetariana<br>
+      <input type="checkbox" id="class-input" name="type" value="Açaí">Açaí<br>
+      <input type="checkbox" id="class-input" name="type" value="Doces">Doces<br>
     </div>
 
-    <div>
-      <label for="class-input"> What do you want to eat? </label><br>
-      <input type="checkbox" id="class-input" name="class" value="Coffee">Coffee<br>
-      <input type="checkbox" id="class-input" name="class" value="Burger">Burger<br>
-      <input type="checkbox" id="class-input" name="class" value="Gourmet">Gourmet<br>
-      <input type="checkbox" id="class-input" name="class" value="Desert">Desert<br>
-    </div>
-
-    <button>Search for Restaurants!</button>
+    <button type="submit">Search for Restaurants!</button>
   </form>
 
   <a href="/restaurants">Go to restaurants page</a>

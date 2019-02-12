@@ -4,4 +4,10 @@
 <p>Address: {{restaurant.address}}</p>
 <img width="200px" src="{{ restaurant.imgPath }}" alt="{{ restaurant.originalName }}" />
 <a href="/addcomment/{{restaurant.id}}">Add comment</a>
+<p>Price range: {{restaurant.minPrice}}-{{restaurant.maxPrice}} reais</p>
+<h1>Comments:</h1>
+{{#each comment}}
+<h3>{{this.title}}</h3>
+<p>{{this.content}}</p>
+{{/each}}
 <div id="map"></div>
