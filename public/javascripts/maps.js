@@ -1,4 +1,5 @@
 
+
 let map;
 const markers = [];
 
@@ -7,6 +8,19 @@ function getRestaurants() {
     .then((response) => {
       console.log(response);
       placeRestaurants(response.data.restaurants);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function getRestaurant(id) {
+  // console.log(window.location.href);
+  axios.get(`/api/${id}`)
+    .then((response) => {
+      console.log(response);
+      let array = [response.data.restaurant];
+      placeRestaurants(array);
     })
     .catch((error) => {
       console.log(error);
@@ -41,10 +55,55 @@ function initMap() {
   };
 
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
+    zoom: 15,
     center: ironhackBCN
   });
 
   getRestaurants();
   console.log('initmap');
 }
+
+
+function emptyMap() {
+  const ironhackSAO = {
+    lat: -23.560453,
+    lng: -46.656232
+  };
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: ironhackSAO
+  });
+  console.log(arr);
+}
+
+function initOne() {
+  const ironhackSAO = {
+    lat: -23.560453,
+    lng: -46.656232
+  };
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: ironhackSAO
+  });
+
+  const url = window.location.href;
+  const index = url.lastIndexOf('/');
+  const id = url.slice(index + 1);
+  // console.log(id);
+
+  getRestaurant(id);
+  console.log('initmap');
+}
+
+
+// const center = {
+//   lat: item.location.coordinates[1],
+//   lng: item.location.coordinates[0]
+//   };
+//   const pin = new google.maps.Marker({
+//   position: center,
+//   map: map,
+//   title: item.name
+//   });

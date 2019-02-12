@@ -2,5 +2,14 @@
 {{#each restaurants}}
     <p><a href="/restaurants/{{this._id}}">{{this.name}}</a> | <a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p></p>
 {{/each}}
-{{!-- <div id="map"></div> --}}
+<div id="map"></div>
 <a href="/">Back to homepage</a>
+
+
+<script>
+   const arr = [{{#each restaurants}}{{this.location.coordinates}}{{/each}}]
+</script>
+<script type="text/javascript" src="/javascripts/maps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNZEVA0U6Hw9-04kOy2ovaOe-89tD284M&callback=emptyMap">
+</script>
+

@@ -23,7 +23,7 @@ restaurantRouter.post('/search-restaurants', (req, res) => {
   const min = parseInt(req.body.min, 10);
   const max = parseInt(req.body.max, 10);
   const type = req.body.type;
-  Restaurant.find({$and: [{'minPrice': {$gte: min}}, {'type': type}, {'maxPrice': {$lte: max}}]})
+  Restaurant.find({ $and: [{ minPrice: { $gte: min } }, { type }, { maxPrice: { $lte: max } }] })
     .then((restaurants) => {
       console.log(restaurants);
       res.render('search', { restaurants });
@@ -31,10 +31,8 @@ restaurantRouter.post('/search-restaurants', (req, res) => {
     .catch((error) => {
       console.log(error);
     });
-  // res.render('index');
 });
 
-// db.restaurants.find({$and: [{'minPrice': {$gte: 10}}, {'type': 'Self Service'}, {'maxPrice': {$lte: 30}}]})
 
 /* Restaurants page */
 
@@ -65,6 +63,8 @@ restaurantRouter.get('/restaurants/:id', (req, res, next) => {
     });
 });
 
+/* API routes */
+
 restaurantRouter.get('/api', (req, res, next) => {
   Restaurant.find({}, (error, allRestaurantsFromDB) => {
     if (error) {
@@ -75,6 +75,38 @@ restaurantRouter.get('/api', (req, res, next) => {
   });
 });
 
+restaurantRouter.get('/api/:id', (req, res, next) => {
+  const restaurantId = req.params.id;
+  Restaurant.findOne({ _id: restaurantId }, (error, oneRestaurantFromDB) => {
+    if (error) {
+      next(error);
+    } else {
+      res.status(200).json({ restaurant: oneRestaurantFromDB });
+    }
+  });
+});
 
-// module.exports = router;
+
+// restaurantRouter.post('/search-restaurants', (req, res) => {
+//   const min = parseInt(req.body.min, 10);
+//   const max = parseInt(req.body.max, 10);
+//   const type = req.body.type;
+//   Restaurant.find({ $and: [{ minPrice: { $gte: min } }, { type }, { maxPrice: { $lte: max } }] })
+//     .then((error, restaurants) => {
+//       restaurantRouter.get('/api/search-restaurants', (req2, res2, next) => {
+//         if (error) {
+//           next(error);
+//         } else {
+//           res2.status(200).json({ restaurant: restaurants });
+//         }
+//       });
+//       console.log(restaurants);
+//       res.render('search', { restaurants });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// });
+
+
 module.exports = restaurantRouter;
