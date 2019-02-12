@@ -19,7 +19,7 @@ function getRestaurant(id) {
   axios.get(`/api/${id}`)
     .then((response) => {
       console.log(response);
-      let array = [response.data.restaurant];
+      const array = [response.data.restaurant];
       placeRestaurants(array);
     })
     .catch((error) => {
@@ -37,10 +37,10 @@ function placeRestaurants(restaurants) {
         lat: restaurant.location.coordinates[1],
         lng: restaurant.location.coordinates[0]
       };
-      console.log("aaa", map)
+      console.log('aaa', map);
       const pin = new google.maps.Marker({
         position: center,
-        map: map,
+        map,
         title: restaurant.name
       });
       markers.push(pin);
@@ -73,6 +73,17 @@ function emptyMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ironhackSAO
+  });
+  arr.forEach((item) => {
+    const center = {
+      lat: item[1],
+      lng: item[0]
+      };
+      const pin = new google.maps.Marker({
+      position: center,
+      map: map,
+      title: "title"
+      });
   });
   console.log('@@@@@@', arr);
 }
