@@ -2,6 +2,8 @@ const express = require('express');
 
 const restaurantRouter = express.Router();
 
+const axios = require('axios');
+
 const multer = require('multer');
 
 const upload = multer({ dest: './public/uploads/' });
@@ -9,6 +11,7 @@ const upload = multer({ dest: './public/uploads/' });
 const Restaurant = require('../models/Restaurant.js');
 
 const Comment = require('../models/Comment.js');
+
 
 /* GET home page */
 restaurantRouter.get('/', (req, res) => {
@@ -60,6 +63,16 @@ restaurantRouter.get('/restaurants/:id', (req, res, next) => {
     .catch((error) => {
       console.log(error);
     });
+});
+
+restaurantRouter.get('/api', (req, res, next) => {
+  Restaurant.find({}, (error, allRestaurantsFromDB) => {
+    if (error) {
+      next(error);
+    } else {
+      res.status(200).json({ restaurants: allRestaurantsFromDB });
+    }
+  });
 });
 
 

@@ -1,9 +1,11 @@
+
 let map;
 const markers = [];
 
 function getRestaurants() {
-  axios.get('/restaurants/api')
+  axios.get('/api')
     .then((response) => {
+      console.log(response);
       placeRestaurants(response.data.restaurants);
     })
     .catch((error) => {
@@ -12,6 +14,7 @@ function getRestaurants() {
 }
 
 function placeRestaurants(restaurants) {
+  console.log('#########', restaurants);
   restaurants.forEach((restaurant) => {
     if (restaurant.location.coordinates.length) {
       console.log('->', restaurant.location.coordinates);
@@ -44,4 +47,7 @@ window.onload = () => {
     lat: undefined,
     lng: undefined
   };
+  console.log('aaaa');
 };
+console.log('marianna');
+getRestaurants();
