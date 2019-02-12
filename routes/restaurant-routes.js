@@ -18,15 +18,17 @@ router.get('/new-restaurant', (req, res, next) => {
 });
 
 router.post('/new-restaurant', uploadCloud.single('photo'), (req, res, next) => {
-  const { name, type, description, address, location = {
+  const { name, type, description, address, price, location = {
     type: 'Point',
     coordinates: [req.body.longitude, req.body.latitude]
   } } = req.body;
 
   const imgPath = req.file.url;
   const originalName = req.file.originalname;
+  const minPrice = parseInt(req.body.min, 10);
+  const maxPrice = parseInt(req.body.max, 10);
 
-  const newRestaurant = new Restaurant({ name, type, description, address, location, imgPath, originalName });
+  const newRestaurant = new Restaurant({ name, type, description, address, location, minPrice, maxPrice, imgPath, originalName });
   newRestaurant.save()
     .then((restaurant) => {
       console.log(newRestaurant);
