@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  // padding: 3%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,4 +10,27 @@ a {
 #map {
   width: 100%;
   height: 400px;
+  margin-bottom: 5%;
 }
+
+.my-card {
+  width: 90%;
+  margin-bottom: 5%;
+  margin-left: 3%;
+}
+
+.nav {
+  width: 100%;
+}
+
+.fix {
+  position: fixed;
+  top: 70px;
+  right: 50px;
+  // float: right;
+}
+
+.content {
+  padding: 2% 3%;
+}
+
