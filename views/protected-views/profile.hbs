@@ -13,8 +13,23 @@
       </div>
       <p><a href="/logout">Logout</a></p>
 		</div>
-		<div class="col-md-6">
-		</div>
+      <div class="col-md-6">
+        <h1>My Comments:</h1>
+        <h4>{{restaurant.name}}</h4>
+        {{#each comment}}
+        
+        <div class="card">
+          <h5 class="card-header">{{this.title}}</h5>
+          
+          <div class="card-body">
+            <p class="card-text">{{this.content}}</p>
+          </div>
+          <div class="card-footer">
+            <p><a href="/edit-comment/{{this._id}}">Edit</a> | <a href="/del-comment/{{this._id}}">Delete</a></p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">

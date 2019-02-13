@@ -1,6 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
+const Comment = require('../../models/Comment');
+const Restaurant = require('../../models/Restaurant');
 const uploadCloud = require('../../config/cloudinary');
 
 const bcryptSalt = 10;
@@ -18,9 +20,17 @@ router.use((req, res, next) => {
 });
 
 router.get('/my-profile', (req, res) => {
-  res.render('protected-views/profile', {
-    user: req.session.currentUser
-  });
+  const userId = req.session.currentUser._id;
+  Comment.find({ userId })
+    .then((comment) => {
+      res.render('protected-views/profile', {
+        user: req.session.currentUser,
+        comment
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 router.get('/profile-update/:id', (req, res) => {
