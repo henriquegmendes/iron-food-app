@@ -14,11 +14,19 @@
 									{{this.name}}
 								</h5>
 								<div class="card-body">
-									<p class="card-text">
-										{{this.description}}
-                    <a href="/restaurants/{{this._id}}">Visit restaurant's page</a>
-                    <a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p>
-									</p>
+								  <div class="row no-gutters">
+										<div class="col-auto">
+												<img width="200px" src="{{ this.imgPath }}" alt="{{ this.originalName }}" />
+										</div>
+										<div class="col">
+												<div class="card-block px-2">
+														{{!-- <h4 class="card-title">Title</h4> --}}
+														<p class="card-text">{{this.description}}</p>
+														<p><a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p>
+														<a href="/restaurants/{{this._id}}" class="btn btn-primary">Visit restaurant's page</a>
+												</div>
+										</div>
+								</div>
 								</div>
 								{{!-- <div class="card-footer">
 									{{this.address}}
