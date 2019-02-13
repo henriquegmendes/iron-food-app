@@ -113,4 +113,15 @@ router.post('/addcomment', (req, res, next) => {
     });
 });
 
+/* Delete comment */
+router.get('/del-comment/:id', (req, res, next) => {
+  Comment.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.redirect('/restaurants');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 module.exports = router;
