@@ -27,19 +27,37 @@ router.get('/profile-update/:id', (req, res) => {
   res.render('protected-views/profile-update');
 });
 
-router.post('/profile-update', uploadCloud.single('photo'), (req, res) => {
+router.post('/profile-update', uploadCloud.single('photo'), (req, res, next) => {
   const { name, email, password } = req.body;
   const imgPathInput = req.file.url;
   const imgNameInput = req.file.originalname;
-  const hashedPass = bcrypt.hashSync(password, salt);
-  User.updateOne({ _id: req.session.currentUser._id }, { $set: { name, email, password: hashedPass, imgPath: imgPathInput, imgName: imgNameInput } })
-    .then(() => {
-      res.redirect('/logout');
-      // res.redirect('/my-profile');
-    })
-    .catch((error) => {
-      console.log(error);
+  if (email === '' || password === '') {
+    res.render('protected-views/profile-update', {
+      errorMessage: 'Enter both email and password.'
     });
+    return;
+  }
+  User.findOne({ email }, '_id', (err, existingUser) => {
+    if (err) {
+      next(err);
+      return;
+    }
+    if (existingUser !== null) {
+      res.render('protected-views/profile-update', {
+        errorMessage: `The email ${email} is already in use.`
+      });
+      return;
+    }
+    const hashedPass = bcrypt.hashSync(password, salt);
+    User.updateOne({ _id: req.session.currentUser._id }, { $set: { name, email, password: hashedPass, imgPath: imgPathInput, imgName: imgNameInput } })
+      .then(() => {
+        res.redirect('/logout');
+      // res.redirect('/my-profile');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 });
 
 module.exports = router;

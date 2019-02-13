@@ -78,12 +78,12 @@ function emptyMap() {
     const center = {
       lat: item[1],
       lng: item[0]
-      };
-      const pin = new google.maps.Marker({
+    };
+    const pin = new google.maps.Marker({
       position: center,
-      map: map,
-      title: "title"
-      });
+      map,
+      title: 'title'
+    });
   });
   console.log('@@@@@@', arr);
 }
@@ -97,6 +97,14 @@ function initOne() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ironhackSAO
+  });
+
+  const image = 'https://res.cloudinary.com/dp1vqoeqr/image/upload/v1550072399/ironfood-app/icons8-marker-48_1.png';
+  let ironMarker = new google.maps.Marker({
+    position: ironhackSAO,
+    map,
+    title: 'Ironhack',
+    icon: image
   });
 
   const url = window.location.href;

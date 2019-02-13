@@ -1,49 +1,108 @@
-<h2>Add new restaurant</h2>
-<form action="/new-restaurant" method="POST" enctype="multipart/form-data">
-  <label for="">Name:</label>
-  <input type="text" name="name"><br>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
+					<form action="/new-restaurant" method="POST" enctype="multipart/form-data">
+						<div class="form-group">
+              <label for="">Name:</label>
+  <input class="form-control" type="text" name="name"><br>
 
-  <label for="class-input"> Type: </label><br>
-  <input type="checkbox" id="class-input" name="type" value="Cafeteria">Cafeteria<br>
-  <input type="checkbox" id="class-input" name="type" value="Fast Food">Fast Food<br>
-  <input type="checkbox" id="class-input" name="type" value="Bar">Bar<br>
-  <input type="checkbox" id="class-input" name="type" value="Asiática">Asiática<br>
-  <input type="checkbox" id="class-input" name="type" value="Pizza">Pizza<br>
-  <input type="checkbox" id="class-input" name="type" value="Hamburgueria">Hamburgueria<br>
-  <input type="checkbox" id="class-input" name="type" value="Self Service">Self Service<br>
-  <input type="checkbox" id="class-input" name="type" value="Vegetariana">Vegetariana<br>
-  <input type="checkbox" id="class-input" name="type" value="Açaí">Açaí<br>
-  <input type="checkbox" id="class-input" name="type" value="Doces">Doces<br>
+							<div class="form-row">
+                <div class="col">
+                  <label for="class-input"> Preço mínimo: </label><br>
+                  <select class="form-control" name="min">
+                    <option value="10">10 reais</option>
+                    <option value="20">20 reais</option>
+                    <option value="30">30 reais</option>
+                    <option value="40">40 reais</option>
+                  </select><br>
+                </div>
+                <div class="col">
+                  <label for="class-input"> Preço máximo: </label><br>
+                  <select class="form-control" name="max">
+                    <option value="30">30 reais</option>
+                    <option value="40">40 reais</option>
+                    <option value="50">50 reais</option>
+                    <option value="51">+ de 50 reais</option>
+                  </select>
+                </div>
+              </div>
+              <label for="class-input"> Tipo de restaurante: </label><br>
+              <div class="form-group"> 
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Cafeteria" name="type">
+                <label class="form-check-label" for="inlineCheckbox1">Cafeteria</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fast Food" name="type">
+                <label class="form-check-label" for="inlineCheckbox2">Fast Food</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Bar" name="type">
+                <label class="form-check-label" for="inlineCheckbox3">Bar</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Asiática" name="type">
+                <label class="form-check-label" for="inlineCheckbox1">Asiática</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pizza" name="type">
+                <label class="form-check-label" for="inlineCheckbox2">Pizza</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hamburgueria" name="type">
+                <label class="form-check-label" for="inlineCheckbox3">Hamburgueria</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Self Service" name="type">
+                <label class="form-check-label" for="inlineCheckbox1">Self Service</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Vegetariana" name="type">
+                <label class="form-check-label" for="inlineCheckbox2">Vegetariana</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Açaí" name="type">
+                <label class="form-check-label" for="inlineCheckbox3">Açaí</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Doces" name="type">
+                <label class="form-check-label" for="inlineCheckbox1">Doces</label>
+              </div>
+      </div>
+      <div class="form-group">
+        <label for="">Description:</label>
+  <input class="form-control" type="text" name="description">
+  </div>
 
-  <label for="class-input"> Preço mínimo: </label><br>
-  <select name="min">
-    <option value="10">10 reais</option>
-    <option value="20">20 reais</option>
-    <option value="30">30 reais</option>
-    <option value="40">40 reais</option>
-  </select>
-
-  <label for="class-input"> Preço máximo: </label><br>
-  <select name="max">
-    <option value="30">30 reais</option>
-    <option value="40">40 reais</option>
-    <option value="50">50 reais</option>
-    <option value="51">+ de 50 reais</option>
-  </select>
-
-  <label for="">Description:</label>
-  <input type="text" name="description">
-
+<div class="form-group">
   <label for="">Address:</label>
-  <input type="text" name="address">
+  <input class="form-control" type="text" name="address">
+  </div>
 
   <label for="">Picture:</label>
-  <input type="file" name="photo">
+  <input class="form-control" type="file" name="photo">
 
   <label for="">Location:</label>
-  <input type="text" name="latitude" placeholder="Latitude">
+  <div class="form-row">  <div class="col">  <input class="form-control" type="text" name="latitude" placeholder="Latitude"></div>
 
-  <input type="text" name="longitude" placeholder="Longitude">
+<div class="col">  <input class="form-control" type="text" name="longitude" placeholder="Longitude"></div>
+</div>
 
-  <button type="submit">ADD</button>
-</form>
+
+
+    
+
+    <button type="submit" class="btn btn-primary">Search for Restaurants!</button>
+  </form>
+
+				</div>
+				<div class="col-md-2">
+				</div>
+			</div>
