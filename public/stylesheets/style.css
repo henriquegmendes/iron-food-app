@@ -1,8 +1,40 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
+
+#map {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 5%; }
+
+.my-card {
+  width: 90%;
+  margin-bottom: 5%;
+  margin-left: 3%; }
+
+.nav {
+  width: 100%; }
+
+.fix {
+  position: fixed;
+  top: 70px;
+  right: 50px; }
+
+.content {
+  padding: 2% 3%; }
+
+.login-text {
+  margin-top: 3%; }
+
+.jumbotron {
+  height: 70%;
+  background-image: url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: 850px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 5%;
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

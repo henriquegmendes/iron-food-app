@@ -4,12 +4,14 @@ const Schema = mongoose.Schema;
 const restSchema = new Schema(
   {
     name: String,
-    type: { type: String, enum: ['coffee shop', 'fast food', 'bar'] },
+    type: { type: String },
     description: String,
     address: { type: String },
+    // price: Number,
+    minPrice: Number,
+    maxPrice: Number,
     imgPath: String,
     imgName: String,
-    comments: { type: Array, default: null },
     location: { type: { type: String }, coordinates: [Number] }
   },
   {

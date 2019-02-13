@@ -1,0 +1,53 @@
+
+
+  <div class="container-fluid content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+            {{#each restaurants}}
+							<div class="card my-card">
+								<h5 class="card-header">
+									{{this.name}}
+								</h5>
+								<div class="card-body">
+									<p class="card-text">
+										{{this.description}}
+                    <a href="/restaurants/{{this._id}}">Visit restaurant's page</a>
+                    <a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p>
+									</p>
+								</div>
+								{{!-- <div class="card-footer">
+									{{this.address}}
+								</div> --}}
+							</div>
+
+
+            {{/each}}
+					</div>
+				</div>
+				<div class="col-md-6">
+          <div id="map"></div>
+          <a class="btn btn-primary" href="/new-restaurant">Add a new restaurant</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+   const arr = [
+    {{#each restaurants}}
+        [
+            {{#each this.location.coordinates}}
+                {{this}},
+            {{/each}}
+        ],
+    {{/each}}
+   ];
+</script>
+<script type="text/javascript" src="/javascripts/maps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNZEVA0U6Hw9-04kOy2ovaOe-89tD284M&callback=emptyMap">
+</script>
+

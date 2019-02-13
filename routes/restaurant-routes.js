@@ -10,30 +10,6 @@ const Restaurant = require('../models/Restaurant.js');
 
 const Comment = require('../models/Comment.js');
 
-/* Restaurants page */
-
-router.get('/restaurants', (req, res) => {
-  Restaurant.find()
-    .then((restaurants) => {
-      res.render('restaurants', { restaurants });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-/* Individual restaurant page */
-
-router.get('/restaurants/:id', (req, res, next) => {
-  const restaurantId = req.params.id;
-  Restaurant.findOne({ _id: restaurantId })
-    .then((restaurant) => {
-      res.render('restaurant-details', { restaurant });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
 
 /* Add new restaurant */
 
@@ -42,15 +18,17 @@ router.get('/new-restaurant', (req, res, next) => {
 });
 
 router.post('/new-restaurant', uploadCloud.single('photo'), (req, res, next) => {
-  const { name, type, description, address, location = {
+  const { name, type, description, address, price, location = {
     type: 'Point',
     coordinates: [req.body.longitude, req.body.latitude]
   } } = req.body;
 
   const imgPath = req.file.url;
   const originalName = req.file.originalname;
+  const minPrice = parseInt(req.body.min, 10);
+  const maxPrice = parseInt(req.body.max, 10);
 
-  const newRestaurant = new Restaurant({ name, type, description, address, location, imgPath, originalName });
+  const newRestaurant = new Restaurant({ name, type, description, address, location, minPrice, maxPrice, imgPath, originalName });
   newRestaurant.save()
     .then((restaurant) => {
       console.log(newRestaurant);
@@ -116,16 +94,33 @@ router.get('/addcomment/:id', (req, res, next) => {
 });
 
 router.post('/addcomment', (req, res, next) => {
+  // const restId = req.params._id;
   const comment = {
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    userId: req.session.currentUser._id,
+    restaurantId: req.body.restId
   };
-  Restaurant.update({ _id: req.query.restaurantId }, { $set: comment })
-    .then((restaurant) => {
-      res.redirect('/restaurants/:restaurantId');
+  console.log(comment);
+  const newComment = new Comment(comment);
+  newComment.save()
+    .then((result) => {
+      console.log(result);
+      res.redirect('/restaurants');
     })
     .catch((error) => {
       console.log(error);
+    });
+});
+
+/* Delete comment */
+router.get('/del-comment/:id', (req, res, next) => {
+  Comment.deleteOne({ _id: req.params.id })
+    .then(() => {
+      res.redirect('/my-profile');
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });
 
