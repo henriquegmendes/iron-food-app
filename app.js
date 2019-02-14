@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(process.env.LOCAL_MONGO, { useNewUrlParser: true })
+  .connect(process.env.LOCAL_URI, { useNewUrlParser: true })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
@@ -33,13 +33,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -70,7 +68,6 @@ app.use((req, res, next) => {
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-
 const index = require('./routes/index');
 const signup = require('./routes/auth/signup');
 const login = require('./routes/auth/login');
@@ -82,6 +79,5 @@ app.use('/', signup);
 app.use('/', login);
 app.use('/', profile);
 app.use('/', restaurants);
-
 
 module.exports = app;
