@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const restSchema = new Schema(
   {
@@ -20,7 +21,6 @@ const restSchema = new Schema(
 );
 
 restSchema.index({ location: '2dsphere' });
-
 const Restaurant = mongoose.model('Restaurant', restSchema);
 
 module.exports = Restaurant;

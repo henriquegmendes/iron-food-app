@@ -4,13 +4,13 @@ const User = require('../../models/User');
 
 const router = express.Router();
 
-router.get('/login', (req, res, next) => {
+router.get('/login', (req, res) => {
   res.render('auth/login', {
     errorMessage: ''
   });
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   const emailInput = req.body.email;
   const passwordInput = req.body.password;
 
@@ -44,7 +44,6 @@ router.use((req, res, next) => {
     next();
     return;
   }
-
   res.redirect('/login');
 });
 
@@ -58,7 +57,6 @@ router.get('/logout', (req, res, next) => {
       next(err);
       return;
     }
-
     res.redirect('/');
   });
 });

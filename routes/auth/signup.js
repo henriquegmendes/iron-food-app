@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const User = require('../../models/User');
 const uploadCloud = require('../../config/cloudinary');
+const User = require('../../models/User');
 
 const router = express.Router();
 const bcryptSalt = 10;
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
@@ -16,7 +16,7 @@ router.post('/signup', uploadCloud.single('photo'), (req, res, next) => {
   const passwordInput = req.body.password;
   const imgPathInput = req.file.url;
   const imgNameInput = req.file.originalname;
-
+  
   if (emailInput === '' || passwordInput === '') {
     res.render('auth/signup', {
       errorMessage: 'Enter both email and password to sign up.'

@@ -1,11 +1,8 @@
 const express = require('express');
-const axios = require('axios');
-const multer = require('multer');
 const Restaurant = require('../models/Restaurant.js');
 const Comment = require('../models/Comment.js');
 
 const restaurantRouter = express.Router();
-const upload = multer({ dest: './public/uploads/' });
 
 /* GET home page */
 restaurantRouter.get('/', (req, res) => {
@@ -16,7 +13,7 @@ restaurantRouter.get('/', (req, res) => {
 restaurantRouter.post('/search-restaurants', (req, res) => {
   const min = parseInt(req.body.min, 10);
   const max = parseInt(req.body.max, 10);
-  const type = req.body.type;
+  const { type } = req.body;
   Restaurant.find({ $and: [{ minPrice: { $gte: min } }, { type }, { maxPrice: { $lte: max } }] })
     .then((restaurants) => {
       console.log(restaurants);
@@ -27,9 +24,7 @@ restaurantRouter.post('/search-restaurants', (req, res) => {
     });
 });
 
-
 /* Restaurants page */
-
 restaurantRouter.get('/restaurants', (req, res) => {
   Restaurant.find()
     .then((restaurants) => {
@@ -42,8 +37,7 @@ restaurantRouter.get('/restaurants', (req, res) => {
 });
 
 /* Individual restaurant page */
-
-restaurantRouter.get('/restaurants/:id', (req, res, next) => {
+restaurantRouter.get('/restaurants/:id', (req, res) => {
   const restaurantId = req.params.id;
   Restaurant.findOne({ _id: restaurantId })
     .then((restaurant) => {
@@ -58,7 +52,6 @@ restaurantRouter.get('/restaurants/:id', (req, res, next) => {
 });
 
 /* API routes */
-
 restaurantRouter.get('/api', (req, res, next) => {
   Restaurant.find({}, (error, allRestaurantsFromDB) => {
     if (error) {
@@ -79,28 +72,5 @@ restaurantRouter.get('/api/:id', (req, res, next) => {
     }
   });
 });
-
-
-// restaurantRouter.post('/search-restaurants', (req, res) => {
-//   const min = parseInt(req.body.min, 10);
-//   const max = parseInt(req.body.max, 10);
-//   const type = req.body.type;
-//   Restaurant.find({ $and: [{ minPrice: { $gte: min } }, { type }, { maxPrice: { $lte: max } }] })
-//     .then((error, restaurants) => {
-//       restaurantRouter.get('/api/search-restaurants', (req2, res2, next) => {
-//         if (error) {
-//           next(error);
-//         } else {
-//           res2.status(200).json({ restaurant: restaurants });
-//         }
-//       });
-//       console.log(restaurants);
-//       res.render('search', { restaurants });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// });
-
 
 module.exports = restaurantRouter;
