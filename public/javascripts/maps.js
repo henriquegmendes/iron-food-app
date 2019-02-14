@@ -66,8 +66,8 @@ function initMap() {
 
 function ironMarker() {
   const ironhackSAO = {
-    lat: -23.560453,
-    lng: -46.656232
+    lat: -23.561725,
+    lng: -46.660133
   };
 
   const image = 'https://res.cloudinary.com/dp1vqoeqr/image/upload/c_scale,h_47/v1550149853/ironfood-app/ironhack.png';
@@ -82,8 +82,8 @@ function ironMarker() {
 
 function emptyMap() {
   const ironhackSAO = {
-    lat: -23.560453,
-    lng: -46.656232
+    lat: -23.561725,
+    lng: -46.660133
   };
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -107,8 +107,8 @@ function emptyMap() {
 
 function initOne() {
   const ironhackSAO = {
-    lat: -23.560453,
-    lng: -46.656232
+    lat: -23.561725,
+    lng: -46.660133
   };
 
   map = new google.maps.Map(document.getElementById('map'), {
