@@ -1,4 +1,3 @@
-
 <header class="masthead">
   <div class="container">
     <div class="intro-text">
@@ -8,143 +7,63 @@
     </div>
   </div>
 </header>
-
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">RESTAURANT SEARCH</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <form action="/search-restaurants" method="post">
-            <div class="row">
-              <div class="col-lg-12 text-center">
-                <div class="form-group">
-                  <label for="class-input"><h3 class="section-subheading text-muted">How much do you want to spend?</h3></label><br>
-                  <input type="hidden" name="min" value="0">
-                  <label for="class-input"> Preço máximo: </label><br>
-                  <select class="form-control form-control-lg" name="max">
-                    <option value="20">R$20.00</option>
-                    <option value="30">R$30.00</option>
-                    <option value="40">R$40.00</option>
-                    <option value="50">R$50.00</option>
-                    <option value="51">More than R$50.00</option>
-                  </select>
-                  <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                  <h3 class="section-subheading text-muted">Choose the restaurant type</h3></label><br>
-                  <p class="help-block text-danger"></p>
-                </div>
-                <div class="form-group">
-                <select class="form-control form-control-lg" name="type">
-                <option value="Coffee Shop">Coffee Shop</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Pizza">Pizza</option>
-                <option value="Asian">Asian</option>
-                <option value="Fast Food">Fast Food</option>
-                <option value="Hamburger">Hamburger</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Açaí">Açaí</option>
-                <option value="Self Service">Self Service</option>
-                <option value="Bar">Bar</option>
-              </select><br>
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-              <div class="col-lg-12 text-center">
-                <div id="success"></div>
-                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">SEARCH</button>
-              </div>
-            </div>
-          </form>
-        </div>
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">RESTAURANT SEARCH</h2>
       </div>
     </div>
-  </section>
-
-
-<<<<<<< HEAD
-
-
-<div class="container-fluid content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8">
-					<form action="/search-restaurants" method="post">
-						<div class="form-group">
-
-							<div class="form-row">
-                <div class="col">
-                  <label for="class-input"> Preço mínimo: </label><br>
-                  <select class="form-control" name="min">
-                    <option value="10">10 reais</option>
-                    <option value="20">20 reais</option>
-                    <option value="30">30 reais</option>
-                    <option value="40">40 reais</option>
-                  </select><br>
-                </div>
-                <div class="col">
-                  <label for="class-input"> Preço máximo: </label><br>
-                  <select class="form-control" name="max">
-                    <option value="30">30 reais</option>
-                    <option value="40">40 reais</option>
-                    <option value="50">50 reais</option>
-                    <option value="51">+ de 50 reais</option>
-                  </select>
-                </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <form action="/search-restaurants" method="post">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <div class="form-group">
+                <label for="class-input">
+                  <h3 class="section-subheading text-muted">How much do you want to spend?</h3>
+                </label>
+                <br>
+                <input type="hidden" name="min" value="0">
+                <label for="class-input"> Preço máximo: </label><br>
+                <select class="form-control form-control-lg" name="max">
+                  <option value="20">R$20.00</option>
+                  <option value="30">R$30.00</option>
+                  <option value="40">R$40.00</option>
+                  <option value="50">R$50.00</option>
+                  <option value="51">More than R$50.00</option>
+                </select>
+                <p class="help-block text-danger"></p>
               </div>
-              <label for="class-input"> Tipo de restaurante: </label><br>
-              <div class="form-group"> 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row form-group">
-				<div class="col-md-6">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Cafeteria" name="type">
-            <label class="form-check-label" for="inlineCheckbox1">Cafeteria</label><br>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fast Food" name="type">
-            <label class="form-check-label" for="inlineCheckbox2">Fast Food</label><br>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Bar" name="type">
-            <label class="form-check-label" for="inlineCheckbox3">Bar</label><br>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Asiática" name="type">
-            <label class="form-check-label" for="inlineCheckbox1">Asiática</label><br>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pizza" name="type">
-            <label class="form-check-label" for="inlineCheckbox2">Pizza</label><br>         
-				</div>
-				<div class="col-md-6">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hamburgueria" name="type">
-            <label class="form-check-label" for="inlineCheckbox3">Hamburgueria</label><br> 
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Self Service" name="type">
-            <label class="form-check-label" for="inlineCheckbox1">Self Service</label><br>    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Vegetariana" name="type">
-            <label class="form-check-label" for="inlineCheckbox2">Vegetariana</label><br> 
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Açaí" name="type">
-            <label class="form-check-label" for="inlineCheckbox3">Açaí</label><br>  
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Doces" name="type">
-            <label class="form-check-label" for="inlineCheckbox1">Doces</label><br> 
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-    
-
-    <button type="submit" class="btn btn-primary">Search for Restaurants!</button>
-  </form>
-
-				</div>
-				<div class="col-md-2">
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-=======
->>>>>>> ddd8143456e7c60451719c8e14089e78ea4b2df6
+              <div class="form-group">
+                <h3 class="section-subheading text-muted">Choose the restaurant type</h3>
+                </label><br>
+                <p class="help-block text-danger"></p>
+              </div>
+              <div class="form-group">
+                <select class="form-control form-control-lg" name="type">
+                  <option value="Coffee Shop">Coffee Shop</option>
+                  <option value="Bakery">Bakery</option>
+                  <option value="Pizza">Pizza</option>
+                  <option value="Asian">Asian</option>
+                  <option value="Fast Food">Fast Food</option>
+                  <option value="Hamburger">Hamburger</option>
+                  <option value="Vegetarian">Vegetarian</option>
+                  <option value="Açaí">Açaí</option>
+                  <option value="Self Service">Self Service</option>
+                  <option value="Bar">Bar</option>
+                </select>
+                <br>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12 text-center">
+              <div id="success"></div>
+              <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">SEARCH</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</section>

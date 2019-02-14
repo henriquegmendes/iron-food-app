@@ -48,4 +48,4 @@ Since we are using google maps API in some views, you need to place your own API
 
 ## Authors & Version Control
 
-App developed by **Henrique Guazzelli Mendes - https://github.com/henriquegmendes** and **Mariana Dobal - https://github.com/mmdobal** - *IronFood App Version 0.1* - **Published in Feb-14th of 2019**
+App developed by **Henrique Guazzelli Mendes - https://github.com/henriquegmendes** and **Marianna Dobal - https://github.com/mmdobal** - *IronFood App Version 0.1* - **Published in Feb-14th of 2019**
