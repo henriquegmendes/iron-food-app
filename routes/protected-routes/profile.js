@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
 const Comment = require('../../models/Comment');
-const Restaurant = require('../../models/Restaurant');
 const uploadCloud = require('../../config/cloudinary');
 
 const bcryptSalt = 10;

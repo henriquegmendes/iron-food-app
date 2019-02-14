@@ -21,7 +21,6 @@ const restSchema = new Schema(
 );
 
 restSchema.index({ location: '2dsphere' });
-
 const Restaurant = mongoose.model('Restaurant', restSchema);
 
 module.exports = Restaurant;

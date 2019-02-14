@@ -1,13 +1,13 @@
 const express = require('express');
-const uploadCloud = require('../config/cloudinary.js');
-const Restaurant = require('../models/Restaurant.js');
-const Comment = require('../models/Comment.js');
+const uploadCloud = require('../../config/cloudinary');
+const Restaurant = require('../../models/Restaurant.js');
+const Comment = require('../../models/Comment.js');
 
 const router = express.Router();
 
 /* Add new restaurant */
-router.get('/new-restaurant', (req, res, next) => {
-  res.render('new-restaurant');
+router.get('/new-restaurant', (req, res) => {
+  res.render('protected-views/new-restaurant');
 });
 
 router.post('/new-restaurant', uploadCloud.single('photo'), (req, res) => {
@@ -19,7 +19,6 @@ router.post('/new-restaurant', uploadCloud.single('photo'), (req, res) => {
   const originalName = req.file.originalname;
   const minPrice = parseInt(req.body.min, 10);
   const maxPrice = parseInt(req.body.max, 10);
-
   const newRestaurant = new Restaurant({ name, type, description, address, location, minPrice, maxPrice, imgPath, originalName });
   newRestaurant.save()
     .then(() => {
@@ -35,7 +34,7 @@ router.post('/new-restaurant', uploadCloud.single('photo'), (req, res) => {
 router.get('/edit/:id', (req, res) => {
   Restaurant.findOne({ _id: req.params.id })
     .then((restaurant) => {
-      res.render('edit', { restaurant });
+      res.render('protected-views/edit-restaurant', { restaurant });
     })
     .catch((err) => {
       console.log(err);
@@ -53,13 +52,6 @@ router.post('/edit', (req, res) => {
     });
 });
 
-
-// const { name, type, description, address, location = {
-//   type: 'Point',
-//   coordinates: [req.body.longitude, req.body.latitude]
-// } } = req.body;
-// Restaurant.update({ _id: req.query.restaurantId }, { $set: { name, type, description, address, location } })
-
 /* Delete restaurant */
 router.get('/del/:id', (req, res) => {
   Restaurant.deleteOne({ _id: req.params.id })
@@ -75,7 +67,7 @@ router.get('/del/:id', (req, res) => {
 router.get('/addcomment/:id', (req, res) => {
   Restaurant.findOne({ _id: req.params.id })
     .then((restaurant) => {
-      res.render('addcomment', { restaurant });
+      res.render('protected-views/addcomment', { restaurant });
     })
     .catch((err) => {
       console.log(err);

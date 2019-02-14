@@ -4,6 +4,9 @@
 </div>
 <div class="col-md-8">
   <h2> UPDATE YOUR PROFILE </h2>
+  {{#if errorMessage}}
+  <p class="error-message">{{errorMessage}}</p>
+  {{/if}}
   <form action="/profile-update" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <div>
