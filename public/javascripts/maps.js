@@ -2,6 +2,10 @@
 
 let map;
 const markers = [];
+const ironhackSAO = {
+ lat: -23.561725,
+ lng: -46.660133
+};
 
 function getRestaurants() {
   axios.get('/api')
@@ -49,14 +53,9 @@ function placeRestaurants(restaurants) {
 }
 
 function initMap() {
-  const ironhackBCN = {
-    lat: -23.560453,
-    lng: -46.656232
-  };
-
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: ironhackBCN
+    center: ironhackSAO
   });
 
   getRestaurants();
@@ -106,6 +105,7 @@ function emptyMap() {
 }
 
 function initOne() {
+
   const ironhackSAO = {
     lat: -23.561725,
     lng: -46.660133
