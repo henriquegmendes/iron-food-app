@@ -1,35 +1,35 @@
 <section class="bg-light" id="portfolio">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div id="map"></div>
-      </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div id="map"></div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">restaurants</h2>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading text-uppercase">restaurants</h2>
     </div>
-    <div class="row">
-      {{#each restaurants}}
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="/restaurants/{{this._id}}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fas fa-plus fa-3x"></i>
-            </div>
-            <img class="img-fluid rest-img" src="{{this.imgPath}}" alt="">
-        </a>
-          <div class="portfolio-caption">
-            <h4 class="text-uppercase">{{this.name}}</h4>
-            <p class="text-muted">{{this.description}}</p>
+  </div>
+  <div class="row">
+    {{#each restaurants}}
+    <div class="col-md-4 col-sm-6 portfolio-item">
+      <a class="portfolio-link" href="/restaurants/{{this._id}}">
+        <div class="portfolio-hover">
+          <div class="portfolio-hover-content">
+            <i class="fas fa-plus fa-3x"></i>
           </div>
-          <img class="img-fluid" src="{{this.imgPath}}" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4 class="text-uppercase">{{this.name}}</h4>
-          <p class="text-muted">{{this.description}}</p>
-        </div>
+          <img class="img-fluid rest-img" src="{{this.imgPath}}" alt="">
+      </a>
+      <div class="portfolio-caption">
+      <h4 class="text-uppercase">{{this.name}}</h4>
+      <p class="text-muted">{{this.description}}</p>
+      </div>
+      <img class="img-fluid" src="{{this.imgPath}}" alt="">
+      </a>
+      <div class="portfolio-caption">
+      <h4 class="text-uppercase">{{this.name}}</h4>
+      <p class="text-muted">{{this.description}}</p>
+      </div>
       </div>
       {{/each}}
     </div>
