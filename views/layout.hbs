@@ -35,12 +35,18 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/my-profile">PROFILE</a>
           </li>
+{{#if isUserLoggedIn}}
+          <li class="nav-item">
+          <a class="nav-link" href="/logout">LOGOUT</a>
+          </li>
+          {{else}}
           <li class="nav-item">
           <a class="nav-link" href="/login">LOGIN</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/signup">SIGN UP</a>
           </li>
+          {{/if}}
         </ul>
       </div>
     </div>
