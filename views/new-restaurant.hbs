@@ -1,106 +1,78 @@
-			<div class="row">
+
+
+			<div class="row content">
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
+          <div class="container">
 					<form action="/new-restaurant" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
-              <label for="">Name:</label>
+              <label for="">NAME</label>
   <input class="form-control" type="text" name="name"><br>
 
-							<div class="form-row">
-                <div class="col">
-                  <label for="class-input"> Preço mínimo: </label><br>
-                  <select class="form-control" name="min">
-                    <option value="10">10 reais</option>
-                    <option value="20">20 reais</option>
-                    <option value="30">30 reais</option>
-                    <option value="40">40 reais</option>
-                  </select><br>
-                </div>
-                <div class="col">
-                  <label for="class-input"> Preço máximo: </label><br>
+                <div class="form-group">
+                  <input type="hidden" name="min" value="0">
+                  <label for="class-input"> MAX PRICE </label><br>
                   <select class="form-control" name="max">
-                    <option value="30">30 reais</option>
-                    <option value="40">40 reais</option>
-                    <option value="50">50 reais</option>
-                    <option value="51">+ de 50 reais</option>
+                    <option value="20">R$20.00</option>
+                    <option value="30">R$30.00</option>
+                    <option value="40">R$40.00</option>
+                    <option value="50">R$50.00</option>
+                    <option value="51">More than R$50.00</option>
                   </select>
+                  {{!-- <p class="help-block text-danger"></p> --}}
                 </div>
-              </div>
-              <label for="class-input"> Tipo de restaurante: </label><br>
-              <div class="form-group"> 
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Cafeteria" name="type">
-                <label class="form-check-label" for="inlineCheckbox1">Cafeteria</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Fast Food" name="type">
-                <label class="form-check-label" for="inlineCheckbox2">Fast Food</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Bar" name="type">
-                <label class="form-check-label" for="inlineCheckbox3">Bar</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Asiática" name="type">
-                <label class="form-check-label" for="inlineCheckbox1">Asiática</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pizza" name="type">
-                <label class="form-check-label" for="inlineCheckbox2">Pizza</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Hamburgueria" name="type">
-                <label class="form-check-label" for="inlineCheckbox3">Hamburgueria</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Self Service" name="type">
-                <label class="form-check-label" for="inlineCheckbox1">Self Service</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Vegetariana" name="type">
-                <label class="form-check-label" for="inlineCheckbox2">Vegetariana</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Açaí" name="type">
-                <label class="form-check-label" for="inlineCheckbox3">Açaí</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Doces" name="type">
-                <label class="form-check-label" for="inlineCheckbox1">Doces</label>
-              </div>
-      </div>
+              <label for="class-input"> TYPE </label><br>
+                <div class="form-group">
+                <select class="form-control" name="type">
+                <option value="Coffee Shop">Coffee Shop</option>
+                <option value="Bakery">Bakery</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Asian">Asian</option>
+                <option value="Fast Food">Fast Food</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Açaí">Açaí</option>
+                <option value="Self Service">Self Service</option>
+                <option value="Bar">Bar</option>
+              </select><br>
+                  <p class="help-block text-danger"></p>
+                </div>
       <div class="form-group">
-        <label for="">Description:</label>
+        <label for="">DESCRIPTION</label>
   <input class="form-control" type="text" name="description">
   </div>
 
 <div class="form-group">
-  <label for="">Address:</label>
+  <label for="">ADDRESS</label>
   <input class="form-control" type="text" name="address">
   </div>
 
-  <label for="">Picture:</label>
-  <input class="form-control" type="file" name="photo">
+              <div class="form-group">
+                <label for="">PICTURE</label>
+                <div class="custom-file">
+                  <input type="file" name="photo" class="custom-file-input">
+                  <label class="custom-file-label">RESTAURANT PHOTO</label>
+                </div>
+              </div>
 
-  <label for="">Location:</label>
-  <div class="form-row">  <div class="col">  <input class="form-control" type="text" name="latitude" placeholder="Latitude"></div>
+  <label for="">LOCATION</label>
+  <div class="form-row">  <div class="col">  <input class="form-control" type="text" name="latitude" placeholder="LATITUDE"></div>
 
-<div class="col">  <input class="form-control" type="text" name="longitude" placeholder="Longitude"></div>
+<div class="col">  <input class="form-control" type="text" name="longitude" placeholder="LONGITUDE"></div>
 </div>
 
 
 
     
 
-    <button type="submit" class="btn btn-primary">Search for Restaurants!</button>
+<div class="row">
+            <div class="col-lg-12 text-center" style="margin-top: 3%">
+    <button type="submit" class="btn btn-primary btn-lg text-uppercase">add new restaurant!</button>
+      </div>
+      </div>
   </form>
+  </div>
 
 				</div>
 				<div class="col-md-2">
