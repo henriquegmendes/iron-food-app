@@ -7,13 +7,7 @@
             <h3>{{user.name}}</h3>
           </div>
           <div class="card-body">
-            {{!-- 
-            <h5 class="card-title">{{user.name}}</h5>
-            --}}
             <img style="max-width: 30%;" src="{{user.imgPath}}">
-            {{!-- 
-            <p class="card-text">{{restaurant.description}}</p>
-            --}}
             <p class="login-text"><a class="btn btn-primary text-uppercase" href="/profile-update/{{user._id}}">Update my profile</a></p>
           </div>
         </div>
@@ -29,7 +23,7 @@
             <p class="card-text">{{this.content}}</p>
           </div>
           <div class="card-footer">
-            <p><a href="/edit-comment/{{this._id}}">Edit</a> | <a href="/del-comment/{{this._id}}">Delete</a></p>
+            <p><a href="/del-comment/{{this._id}}">Delete</a></p>
           </div>
         </div>
         {{/each}}
