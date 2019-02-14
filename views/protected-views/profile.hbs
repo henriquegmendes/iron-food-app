@@ -8,17 +8,17 @@
           {{!-- <h5 class="card-title">{{user.name}}</h5> --}}
           <img style="max-width: 30%;" src="{{user.imgPath}}">
           {{!-- <p class="card-text">{{restaurant.description}}</p> --}}
-          <p class="login-text"><a href="/profile-update/{{user._id}}">Update my profile</a></p>
+          <p class="login-text"><a class="btn btn-primary text-uppercase" href="/profile-update/{{user._id}}">Update my profile</a></p>
         </div>
       </div>
-      <p><a href="/logout">Logout</a></p>
+      <p><a class="btn btn-primary text-uppercase" href="/logout">Logout</a></p>
 		</div>
       <div class="col-md-6">
         <h1>My Comments:</h1>
         <h4>{{restaurant.name}}</h4>
         {{#each comment}}
         
-        <div class="card">
+        <div class="card row">
           <h5 class="card-header">{{this.title}}</h5>
           
           <div class="card-body">

@@ -276,4 +276,7 @@ section#contact :-ms-input-placeholder {
   #portfolio .portfolio-item {
     margin: 0 0 30px; } }
 
+.max-col {
+  width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
