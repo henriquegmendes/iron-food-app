@@ -1,17 +1,11 @@
 const express = require('express');
-
-const restaurantRouter = express.Router();
-
 const axios = require('axios');
-
 const multer = require('multer');
-
-const upload = multer({ dest: './public/uploads/' });
-
 const Restaurant = require('../models/Restaurant.js');
-
 const Comment = require('../models/Comment.js');
 
+const restaurantRouter = express.Router();
+const upload = multer({ dest: './public/uploads/' });
 
 /* GET home page */
 restaurantRouter.get('/', (req, res) => {
