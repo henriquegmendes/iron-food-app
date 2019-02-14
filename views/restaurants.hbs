@@ -1,50 +1,47 @@
 
-  <div class="container-fluid content rest-page">
-	<div class="row">
-		<div class="col-md-12">
+{{!-- <p><a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p> --}}
+
+ 
+<section class="bg-light" id="portfolio">
+    <div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<div class="row">
-            {{#each restaurants}}
-						{{!-- <div class="col-md-12">
-    <p><a href="/restaurants/{{this._id}}">{{this.name}}</a> | <a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p></p>
-						</div> --}}
-							<div class="card my-card">
-								<h5 class="card-header text-uppercase">
-									{{this.name}}
-								</h5>
-								<div class="card-body">
-								  <div class="row no-gutters">
-										<div class="col-auto">
-												<img class="mx-auto rounded-circle rest-img" width="200px" height="200px" src="{{ this.imgPath }}" alt="{{ this.originalName }}" />
-										</div>
-										<div class="col">
-												<div class="card-block px-2">
-														{{!-- <h4 class="card-title">Title</h4> --}}
-														<p class="card-text">{{this.description}}</p>
-														<p><a href="/edit/{{this._id}}">Edit</a> | <a href="/del/{{this._id}}">Delete</a></p>
-														<a href="/restaurants/{{this._id}}" class="btn btn-primary text-uppercase">Visit restaurant's page</a>
-												</div>
-										</div>
-								</div>
-								</div>
-								{{!-- <div class="card-footer">
-									{{this.address}}
-								</div> --}}
-							</div>
-
-
-            {{/each}}
-					</div>
-				</div>
-				<div class="col-md-6">
+        <div class="col-lg-12 text-center">
           <div id="map"></div>
-          <a class="btn btn-primary btn-xl text-uppercase" href="/new-restaurant">Add a new restaurant</a>
-				</div>
-			</div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">restaurants</h2>
+        </div>
+      </div>
+<div class="row">
+{{#each restaurants}}
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="/restaurants/{{this._id}}">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid mx-auto" src="{{this.imgPath}}" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4 class="text-uppercase">{{this.name}}</h4>
+            <p class="text-muted">{{this.description}}</p>
+          </div>
+        </div>
+		{{/each}}
 		</div>
-	</div>
-</div>
+					<div class="row">
+        <div class="col-lg-12 text-center">
+					<a class="btn btn-primary btn-xl text-uppercase" href="/new-restaurant">Add a new restaurant</a>
+      </div>
+      </div>
+
+      </div>
+
+
+  </section>
 
 <script type="text/javascript" src="/javascripts/maps.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNZEVA0U6Hw9-04kOy2ovaOe-89tD284M&callback=initMap">

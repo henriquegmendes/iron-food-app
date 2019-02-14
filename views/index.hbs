@@ -25,11 +25,12 @@
                   <label for="class-input"><h3 class="section-subheading text-muted">How much do you want to spend?</h3></label><br>
                   <input type="hidden" name="min" value="0">
                   <label for="class-input"> Preço máximo: </label><br>
-                  <select class="form-control" name="max">
-                    <option value="30">30 reais</option>
-                    <option value="40">40 reais</option>
-                    <option value="50">50 reais</option>
-                    <option value="51">+ de 50 reais</option>
+                  <select class="form-control form-control-lg" name="max">
+                    <option value="20">R$20.00</option>
+                    <option value="30">R$30.00</option>
+                    <option value="40">R$40.00</option>
+                    <option value="50">R$50.00</option>
+                    <option value="51">More than R$50.00</option>
                   </select>
                   <p class="help-block text-danger"></p>
                 </div>
@@ -38,7 +39,18 @@
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
+                <select class="form-control form-control-lg" name="type">
+                <option value="Coffee Shop">Coffee Shop</option>
+                <option value="Bakery">Bakery</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Asian">Asian</option>
+                <option value="Fast Food">Fast Food</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Açaí">Açaí</option>
+                <option value="Self Service">Self Service</option>
+                <option value="Bar">Bar</option>
+              </select><br>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -55,6 +67,7 @@
   </section>
 
 
+<<<<<<< HEAD
 
 
 <div class="container-fluid content">
@@ -133,3 +146,5 @@
 		</div>
 	</div>
 </div>
+=======
+>>>>>>> ddd8143456e7c60451719c8e14089e78ea4b2df6
