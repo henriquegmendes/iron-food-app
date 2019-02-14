@@ -13,7 +13,11 @@ const MongoStore = require('connect-mongo')(session);
 
 mongoose.Promise = Promise;
 mongoose
+<<<<<<< HEAD
+  .connect(process.env.LOCAL_URI, { useNewUrlParser: true })
+=======
   .connect(process.env.LOCAL_MONGO, { useNewUrlParser: true })
+>>>>>>> 6c9e7775310c9a07c27d1f02daa0ebb256d41194
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
