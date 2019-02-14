@@ -1,5 +1,3 @@
-
-
 let map;
 const markers = [];
 
