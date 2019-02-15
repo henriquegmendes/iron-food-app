@@ -16,7 +16,7 @@ router.post('/signup', uploadCloud.single('photo'), (req, res, next) => {
   const passwordInput = req.body.password;
   const imgPathInput = req.file.url;
   const imgNameInput = req.file.originalname;
-
+  
   if (emailInput === '' || passwordInput === '') {
     res.render('auth/signup', {
       errorMessage: 'Enter both email and password to sign up.'

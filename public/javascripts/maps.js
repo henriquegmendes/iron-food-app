@@ -1,9 +1,26 @@
 let map;
 const markers = [];
 const ironhackSAO = {
- lat: -23.561725,
- lng: -46.660133
+  lat: -23.561725,
+  lng: -46.660133
 };
+
+function placeRestaurants(restaurants) {
+  restaurants.forEach((restaurant) => {
+    if (restaurant.location.coordinates.length) {
+      const center = {
+        lat: restaurant.location.coordinates[1],
+        lng: restaurant.location.coordinates[0]
+      };
+      const pin = new google.maps.Marker({
+        position: center,
+        map,
+        title: restaurant.name
+      });
+      markers.push(pin);
+    }
+  });
+}
 
 function getRestaurants() {
   axios.get('/api')
@@ -17,7 +34,6 @@ function getRestaurants() {
 }
 
 function getRestaurant(id) {
-  // console.log(window.location.href);
   axios.get(`/api/${id}`)
     .then((response) => {
       console.log(response);
@@ -29,44 +45,11 @@ function getRestaurant(id) {
     });
 }
 
-function placeRestaurants(restaurants) {
-  console.log('#########', restaurants);
-  restaurants.forEach((restaurant) => {
-    // console.log('$$$$$$', restaurant);
-    if (restaurant.location.coordinates.length) {
-      console.log('->', restaurant.location.coordinates);
-      const center = {
-        lat: restaurant.location.coordinates[1],
-        lng: restaurant.location.coordinates[0]
-      };
-      console.log('aaa', map);
-      const pin = new google.maps.Marker({
-        position: center,
-        map,
-        title: restaurant.name
-      });
-      markers.push(pin);
-    }
-  });
-}
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: ironhackSAO
-  });
-
-  getRestaurants();
-  ironMarker();
-  console.log('initmap');
-}
-
 function ironMarker() {
   const ironhackSAO = {
     lat: -23.561725,
     lng: -46.660133
   };
-
   const image = 'https://res.cloudinary.com/dp1vqoeqr/image/upload/c_scale,h_47/v1550149853/ironfood-app/ironhack.png';
   let ironMarker = new google.maps.Marker({
     position: ironhackSAO,
@@ -76,13 +59,20 @@ function ironMarker() {
   });
 }
 
+function initMaps() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: ironhackSAO
+  });
+  getRestaurants();
+  ironMarker();
+}
 
-function emptyMap() {
+function searchMap() {
   const ironhackSAO = {
     lat: -23.561725,
     lng: -46.660133
   };
-
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ironhackSAO
@@ -99,21 +89,17 @@ function emptyMap() {
     });
   });
   ironMarker();
-  console.log('@@@@@@', arr);
 }
 
 function initOne() {
-
   const ironhackSAO = {
     lat: -23.561725,
     lng: -46.660133
   };
-
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: ironhackSAO
   });
-
   const image = 'https://res.cloudinary.com/dp1vqoeqr/image/upload/c_scale,h_47/v1550149853/ironfood-app/ironhack.png';
   let ironMarker = new google.maps.Marker({
     position: ironhackSAO,
@@ -121,31 +107,10 @@ function initOne() {
     title: 'Ironhack',
     icon: image
   });
-
   const url = window.location.href;
   const index = url.lastIndexOf('/');
   const id = url.slice(index + 1);
-  // console.log(id);
 
   getRestaurant(id);
   ironMarker();
-  console.log('initmap');
 }
-
-
-// const center = {
-//   lat: item.location.coordinates[1],
-//   lng: item.location.coordinates[0]
-//   };
-//   const pin = new google.maps.Marker({
-//   position: center,
-//   map: map,
-//   title: item.name
-//   });
-
-
-// arr.push([{{#each restaurants}}{{this.location.coordinates}}{{/each}}])
-// {{#each restaurants}}arr.push([{{this.location.coordinates}}]){{/each}}
-
-// original
-// const arr = [{{#each restaurants}}{{this.location.coordinates}}{{/each}}]

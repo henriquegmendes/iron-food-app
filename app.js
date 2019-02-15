@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -65,14 +64,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
-
 const index = require('./routes/index');
 const signup = require('./routes/auth/signup');
 const login = require('./routes/auth/login');
 const profile = require('./routes/protected-routes/profile');
-const restaurants = require('./routes/restaurant-routes');
+const restaurants = require('./routes/protected-routes/restaurant-routes');
 
 app.use('/', index);
 app.use('/', signup);
